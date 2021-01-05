@@ -1,0 +1,262 @@
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 3:
+SQL> 
+SQL> define
+DEFINE _DATE           = "04-OCT-18" (CHAR)
+DEFINE _CONNECT_IDENTIFIER = "XE" (CHAR)
+DEFINE _USER           = "SCOTT" (CHAR)
+DEFINE _PRIVILEGE      = "" (CHAR)
+DEFINE _SQLPLUS_RELEASE = "1102000200" (CHAR)
+DEFINE _EDITOR         = "Notepad" (CHAR)
+DEFINE _O_VERSION      = "Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" (CHAR)
+DEFINE _O_RELEASE      = "1102000200" (CHAR)
+DEFINE WNAME           = "Smith" (CHAR)
+DEFINE WDEPTID         = "0" (CHAR)
+DEFINE WSALARY         = "150000" (CHAR)
+DEFINE WSALARY1        = "335000" (CHAR)
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 4:
+SQL> 
+SQL> define wname = 'Smith'
+SQL> define wdeptid = 0
+SQL> define wsalary = 15000
+SQL> define
+DEFINE _DATE           = "04-OCT-18" (CHAR)
+DEFINE _CONNECT_IDENTIFIER = "XE" (CHAR)
+DEFINE _USER           = "SCOTT" (CHAR)
+DEFINE _PRIVILEGE      = "" (CHAR)
+DEFINE _SQLPLUS_RELEASE = "1102000200" (CHAR)
+DEFINE _EDITOR         = "Notepad" (CHAR)
+DEFINE _O_VERSION      = "Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" (CHAR)
+DEFINE _O_RELEASE      = "1102000200" (CHAR)
+DEFINE WNAME           = "Smith" (CHAR)
+DEFINE WDEPTID         = "0" (CHAR)
+DEFINE WSALARY         = "15000" (CHAR)
+DEFINE WSALARY1        = "335000" (CHAR)
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 5:
+SQL> 
+SQL> define wposition =  2
+SQL> define wposition
+DEFINE WPOSITION       = "2" (CHAR)
+SQL> define
+DEFINE _DATE           = "04-OCT-18" (CHAR)
+DEFINE _CONNECT_IDENTIFIER = "XE" (CHAR)
+DEFINE _USER           = "SCOTT" (CHAR)
+DEFINE _PRIVILEGE      = "" (CHAR)
+DEFINE _SQLPLUS_RELEASE = "1102000200" (CHAR)
+DEFINE _EDITOR         = "Notepad" (CHAR)
+DEFINE _O_VERSION      = "Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" (CHAR)
+DEFINE _O_RELEASE      = "1102000200" (CHAR)
+DEFINE WNAME           = "Smith" (CHAR)
+DEFINE WDEPTID         = "0" (CHAR)
+DEFINE WSALARY         = "15000" (CHAR)
+DEFINE WSALARY1        = "335000" (CHAR)
+DEFINE WPOSITION       = "2" (CHAR)
+SQL> undefine wposition
+SQL> define
+DEFINE _DATE           = "04-OCT-18" (CHAR)
+DEFINE _CONNECT_IDENTIFIER = "XE" (CHAR)
+DEFINE _USER           = "SCOTT" (CHAR)
+DEFINE _PRIVILEGE      = "" (CHAR)
+DEFINE _SQLPLUS_RELEASE = "1102000200" (CHAR)
+DEFINE _EDITOR         = "Notepad" (CHAR)
+DEFINE _O_VERSION      = "Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" (CHAR)
+DEFINE _O_RELEASE      = "1102000200" (CHAR)
+DEFINE WNAME           = "Smith" (CHAR)
+DEFINE WDEPTID         = "0" (CHAR)
+DEFINE WSALARY         = "15000" (CHAR)
+DEFINE WSALARY1        = "335000" (CHAR)
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 6:
+SQL> 
+SQL> select * from employee;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE      SALARY COMMISSION     DEPTID     QUALID                                                                                  
+---------- --------------- --------------- ---------- ---------- --------- ---------- ---------- ---------- ----------                                                                                  
+       111 Smith           John                     1            15-APR-60     265000      35000         10          1                                                                                  
+       246 Houston         Larry                    2        111 19-MAY-67     150000      10000         40          2                                                                                  
+       123 Roberts         Sandi                    2        111 02-DEC-91      75000                    10          2                                                                                  
+       433 McCall          Alex                     3        543 10-MAY-97      66500                    20          4                                                                                  
+       543 Dev             Derek                    2        111 15-MAR-95      80000      20000         20          1                                                                                  
+       200 Shaw            Jinku                    5        135 03-JAN-00      24500       3000         30                                                                                             
+       135 Garner          Stanley                  2        111 29-FEB-96      45000       5000         30          5                                                                                  
+       222 Chen            Sunny                    4        123 15-AUG-99      35000                    10          3                                                                                  
+
+8 rows selected.
+
+SQL> 
+SQL> select *
+  2  from employee
+  3  where deptid = 10;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE      SALARY COMMISSION     DEPTID     QUALID                                                                                  
+---------- --------------- --------------- ---------- ---------- --------- ---------- ---------- ---------- ----------                                                                                  
+       111 Smith           John                     1            15-APR-60     265000      35000         10          1                                                                                  
+       123 Roberts         Sandi                    2        111 02-DEC-91      75000                    10          2                                                                                  
+       222 Chen            Sunny                    4        123 15-AUG-99      35000                    10          3                                                                                  
+
+SQL> 
+SQL> 
+SQL> select *
+  2  from employee
+  3  where deptid = &deptid;
+Enter value for deptid: 
+old   3: where deptid = &deptid
+new   3: where deptid = 
+where deptid = 
+              *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 7:
+SQL> 
+SQL> 
+SQL> --Use of Temporary Variables
+SQL> select *
+  2  from employee
+  3  where deptid = &wdept;
+Enter value for wdept: 
+old   3: where deptid = &wdept
+new   3: where deptid = 
+where deptid = 
+              *
+ERROR at line 3:
+ORA-00936: missing expression 
+
+
+SQL> 
+SQL> 
+SQL> --Use of Temporary Variables
+SQL> select *
+  2  from employee
+  3  where lname = '&wname1';
+Enter value for wname1: 
+old   3: where lname = '&wname1'
+new   3: where lname = ''
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> 
+SQL> --Use of Permanent Variables
+SQL> select *
+  2  from employee
+  3  where lname = '&&wname1';
+Enter value for wname1: 
+old   3: where lname = '&&wname1'
+new   3: where lname = ''
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> --Use of Temporary Variables
+SQL> define wname = 'Smith'
+SQL> select *
+  2  from employee
+  3  where lname = '&wname1';
+old   3: where lname = '&wname1'
+new   3: where lname = ''
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 8:
+SQL> 
+SQL> 
+SQL> --Use of Permanent Variables
+SQL> select *
+  2  from employee
+  3  where salary = &&wsalary1;
+old   3: where salary = &&wsalary1
+new   3: where salary = 335000
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> 
+SQL> select *
+  2  from employee
+  3  where salary = &&wsalary1;
+old   3: where salary = &&wsalary1
+new   3: where salary = 335000
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> 
+SQL> select *
+  2  from employee
+  3  where salary = &&wsalary1;
+old   3: where salary = &&wsalary1
+new   3: where salary = 335000
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> define
+DEFINE _DATE           = "04-OCT-18" (CHAR)
+DEFINE _CONNECT_IDENTIFIER = "XE" (CHAR)
+DEFINE _USER           = "SCOTT" (CHAR)
+DEFINE _PRIVILEGE      = "" (CHAR)
+DEFINE _SQLPLUS_RELEASE = "1102000200" (CHAR)
+DEFINE _EDITOR         = "Notepad" (CHAR)
+DEFINE _O_VERSION      = "Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production" (CHAR)
+DEFINE _O_RELEASE      = "1102000200" (CHAR)
+DEFINE WNAME           = "Smith" (CHAR)
+DEFINE WDEPTID         = "0" (CHAR)
+DEFINE WSALARY         = "15000" (CHAR)
+DEFINE WSALARY1        = "335000" (CHAR)
+DEFINE WNAME1          = "" (CHAR)
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 9:
+SQL> 
+SQL> spool off

@@ -1,0 +1,255 @@
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 3:
+SQL> 
+SQL> select *
+  2  from employee;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE      SALARY COMMISSION     DEPTID     QUALID                                                                                  
+---------- --------------- --------------- ---------- ---------- --------- ---------- ---------- ---------- ----------                                                                                  
+       111 Smith           John                     1            15-APR-60     265000      35000         10          1                                                                                  
+       246 Houston         Larry                    2        111 19-MAY-67     150000      10000         40          2                                                                                  
+       123 Roberts         Sandi                    2        111 02-DEC-91      75000                    10          2                                                                                  
+       433 McCall          Alex                     3        543 10-MAY-97      66500                    20          4                                                                                  
+       543 Dev             Derek                    2        111 15-MAR-95      80000      20000         20          1                                                                                  
+       200 Shaw            Jinku                    5        135 03-JAN-00      24500       3000         30                                                                                             
+       135 Garner          Stanley                  2        111 29-FEB-96      45000       5000         30          5                                                                                  
+       222 Chen            Sunny                    4        123 15-AUG-99      35000                    10          3                                                                                  
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 4:
+SQL> 
+SQL> select deptid, count(employeeid)
+  2  from employee
+  3  group by deptid;
+
+    DEPTID COUNT(EMPLOYEEID)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+        30                 2                                                                                                                                                                            
+        20                 2                                                                                                                                                                            
+        40                 1                                                                                                                                                                            
+        10                 3                                                                                                                                                                            
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> ---Step 5:
+SQL> 
+SQL> select deptid, count(employeeid)
+  2  from employee
+  3  group by deptid
+  4  order by count(employeeid) asc;
+
+    DEPTID COUNT(EMPLOYEEID)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+        40                 1                                                                                                                                                                            
+        30                 2                                                                                                                                                                            
+        20                 2                                                                                                                                                                            
+        10                 3                                                                                                                                                                            
+
+SQL> 
+SQL> 
+SQL> 
+SQL> select deptid, count(employeeid)
+  2  from employee
+  3  group by deptid
+  4  order by count(employeeid) desc;
+
+    DEPTID COUNT(EMPLOYEEID)                                                                                                                                                                            
+---------- -----------------                                                                                                                                                                            
+        10                 3                                                                                                                                                                            
+        30                 2                                                                                                                                                                            
+        20                 2                                                                                                                                                                            
+        40                 1                                                                                                                                                                            
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 6:
+SQL> 
+SQL> select deptid, count(employeeid), sum(salary)
+  2  from employee
+  3  group by deptid;
+
+    DEPTID COUNT(EMPLOYEEID) SUM(SALARY)                                                                                                                                                                
+---------- ----------------- -----------                                                                                                                                                                
+        30                 2       69500                                                                                                                                                                
+        20                 2      146500                                                                                                                                                                
+        40                 1      150000                                                                                                                                                                
+        10                 3      375000                                                                                                                                                                
+
+SQL> 
+SQL> 
+SQL> select deptid, count(employeeid) as "Number of Employees", sum(salary) as "Total Salary"
+  2  from employee
+  3  group by deptid;
+
+    DEPTID Number of Employees Total Salary                                                                                                                                                             
+---------- ------------------- ------------                                                                                                                                                             
+        30                   2        69500                                                                                                                                                             
+        20                   2       146500                                                                                                                                                             
+        40                   1       150000                                                                                                                                                             
+        10                   3       375000                                                                                                                                                             
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 7:
+SQL> 
+SQL> select count(employeeid) as "Number of Employees", sum(salary) as "Total Salary"
+  2  from employee
+  3  group by deptid;
+
+Number of Employees Total Salary                                                                                                                                                                        
+------------------- ------------                                                                                                                                                                        
+                  2        69500                                                                                                                                                                        
+                  2       146500                                                                                                                                                                        
+                  1       150000                                                                                                                                                                        
+                  3       375000                                                                                                                                                                        
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 8:
+SQL> 
+SQL> select count(employeeid) as "Number of Employees", sum(salary) as "Total Salary"
+  2  from employee;
+
+Number of Employees Total Salary                                                                                                                                                                        
+------------------- ------------                                                                                                                                                                        
+                  8       741000                                                                                                                                                                        
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 9:
+SQL> 
+SQL> select deptid, count(employeeid) as "Number of Employees", sum(salary) as "Total Salary",  sum(commission) as "Total Commission"
+  2  from employee
+  3  group by deptid;
+
+    DEPTID Number of Employees Total Salary Total Commission                                                                                                                                            
+---------- ------------------- ------------ ----------------                                                                                                                                            
+        30                   2        69500             8000                                                                                                                                            
+        20                   2       146500            20000                                                                                                                                            
+        40                   1       150000            10000                                                                                                                                            
+        10                   3       375000            35000                                                                                                                                            
+
+SQL> 
+SQL> select *
+  2  from employee;
+
+EMPLOYEEID LNAME           FNAME           POSITIONID SUPERVISOR HIREDATE      SALARY COMMISSION     DEPTID     QUALID                                                                                  
+---------- --------------- --------------- ---------- ---------- --------- ---------- ---------- ---------- ----------                                                                                  
+       111 Smith           John                     1            15-APR-60     265000      35000         10          1                                                                                  
+       246 Houston         Larry                    2        111 19-MAY-67     150000      10000         40          2                                                                                  
+       123 Roberts         Sandi                    2        111 02-DEC-91      75000                    10          2                                                                                  
+       433 McCall          Alex                     3        543 10-MAY-97      66500                    20          4                                                                                  
+       543 Dev             Derek                    2        111 15-MAR-95      80000      20000         20          1                                                                                  
+       200 Shaw            Jinku                    5        135 03-JAN-00      24500       3000         30                                                                                             
+       135 Garner          Stanley                  2        111 29-FEB-96      45000       5000         30          5                                                                                  
+       222 Chen            Sunny                    4        123 15-AUG-99      35000                    10          3                                                                                  
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 10:
+SQL> 
+SQL> select deptid, count(employeeid) as "Number of Employees", sum(salary) as "Total Salary",  sum(commission)
+  2  from employee
+  3  where commission is not null
+  4  group by deptid;
+
+    DEPTID Number of Employees Total Salary SUM(COMMISSION)                                                                                                                                             
+---------- ------------------- ------------ ---------------                                                                                                                                             
+        30                   2        69500            8000                                                                                                                                             
+        20                   1        80000           20000                                                                                                                                             
+        40                   1       150000           10000                                                                                                                                             
+        10                   1       265000           35000                                                                                                                                             
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 11:
+SQL> 
+SQL> select deptid, count(employeeid) as "Number of Employees", sum(salary) as "Total Salary",  sum(commission)
+  2  from employee
+  3  where commission is not null
+  4  group by deptid
+  5  having count(employeeid) >= 2;
+
+    DEPTID Number of Employees Total Salary SUM(COMMISSION)                                                                                                                                             
+---------- ------------------- ------------ ---------------                                                                                                                                             
+        30                   2        69500            8000                                                                                                                                             
+
+SQL> 
+SQL> 
+SQL> select deptid, count(employeeid) as "Number of Employees", sum(salary) as "Total Salary",  sum(commission)
+  2  from employee
+  3  where commission is not null
+  4  group by deptid
+  5  having count(employeeid) = 1;
+
+    DEPTID Number of Employees Total Salary SUM(COMMISSION)                                                                                                                                             
+---------- ------------------- ------------ ---------------                                                                                                                                             
+        20                   1        80000           20000                                                                                                                                             
+        40                   1       150000           10000                                                                                                                                             
+        10                   1       265000           35000                                                                                                                                             
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 12:
+SQL> 
+SQL> select deptid, count(employeeid) as "Number of Employees", sum(salary) as "Total Salary",  sum(commission) as "Total Commission"
+  2  from employee
+  3  where commission is not null
+  4  group by deptid
+  5  having count(employeeid) = 1
+  6  order by sum(salary);
+
+    DEPTID Number of Employees Total Salary Total Commission                                                                                                                                            
+---------- ------------------- ------------ ----------------                                                                                                                                            
+        20                   1        80000            20000                                                                                                                                            
+        40                   1       150000            10000                                                                                                                                            
+        10                   1       265000            35000                                                                                                                                            
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 13:
+SQL> 
+SQL> spool off;

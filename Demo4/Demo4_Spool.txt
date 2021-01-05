@@ -1,0 +1,320 @@
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 3:
+SQL> 
+SQL> select *
+  2  from student;
+
+STUDE LAST            FIRST           STREET                    CITY            ST ZIP   STAR BIRTHDATE  FACULTYID    MAJORID PHONE                                                                     
+----- --------------- --------------- ------------------------- --------------- -- ----- ---- --------- ---------- ---------- ----------                                                                
+00100 Diaz            Jose            1 Ford Avenue #7          Hill            NJ 08863 WN03 12-FEB-83        123        100 9735551111                                                                
+00101 Tyler           Mickey          12 Morris Avenue          Bronx           NY 10468 SP03 18-MAR-84        555        500 7185552222                                                                
+00102 Patel           Rajesh          25 River Road #3          Edison          NJ 08837 WN03 12-DEC-85        111        400 7325553333                                                                
+00103 Rickles         Deborah         100 Main Street           Iselin          NJ 08838 FL02 20-OCT-70        555        500 7325554444                                                                
+00104 Lee             Brian           2845 First Lane           Hope            NY 11373 WN03 28-NOV-85        345        600 2125555555                                                                
+00105 Khan            Amir            213 Broadway              Clifton         NJ 07222 WN03 07-JUL-84        222        200 2015556666                                                                
+
+6 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 4:
+SQL> 
+SQL> select *
+  2  from employee;
+
+EMPLOYEEID Last Name            First Name           POSITIONID SUPERVISOR HIREDATE  Salary Amount COMMISSION     DEPTID     QUALID                                                                     
+---------- -------------------- -------------------- ---------- ---------- --------- ------------- ---------- ---------- ----------                                                                     
+       111 Smith                John                          1            15-APR-60   $265,000.00      35000         10          1                                                                     
+       246 Houston              Larry                         2        111 19-MAY-67   $150,000.00      10000         40          2                                                                     
+       123 Roberts              Sandi                         2        111 02-DEC-91    $75,000.00                    10          2                                                                     
+       433 McCall               Alex                          3        543 10-MAY-97    $66,500.00                    20          4                                                                     
+       543 Dev                  Derek                         2        111 15-MAR-95    $80,000.00      20000         20          1                                                                     
+       200 Shaw                 Jinku                         5        135 03-JAN-00    $24,500.00       3000         30                                                                                
+       135 Garner               Stanley                       2        111 29-FEB-96    $45,000.00       5000         30          5                                                                     
+       222 Chen                 Sunny                         4        123 15-AUG-99    $35,000.00                    10          3                                                                     
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 5:
+SQL> 
+SQL> column lname heading "Last Name" format A20;
+SQL> column fname heading "First Name" format A20;
+SQL> column salary heading "Salary Amount" format $999,999.99;
+SQL> 
+SQL> select * from dependent;
+
+EMPLOYEEID DEPENDENTID DEPDOB    RELATION                                                                                                                                                               
+---------- ----------- --------- --------                                                                                                                                                               
+       543           1 28-SEP-58 Spouse                                                                                                                                                                 
+       543           2 14-OCT-88 Son                                                                                                                                                                    
+       200           1 10-JUN-76 Spouse                                                                                                                                                                 
+       222           1 04-FEB-75 Spouse                                                                                                                                                                 
+       222           2 23-AUG-97 Son                                                                                                                                                                    
+       222           3 10-JUL-99 Daughter                                                                                                                                                               
+       111           1 12-DEC-45 Spouse                                                                                                                                                                 
+
+7 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 6:
+SQL> 
+SQL> describe employee
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EMPLOYEEID                                                                                                        NOT NULL NUMBER(3)
+ LNAME                                                                                                             NOT NULL VARCHAR2(15)
+ FNAME                                                                                                             NOT NULL VARCHAR2(15)
+ POSITIONID                                                                                                                 NUMBER(1)
+ SUPERVISOR                                                                                                                 NUMBER(3)
+ HIREDATE                                                                                                                   DATE
+ SALARY                                                                                                                     NUMBER(6)
+ COMMISSION                                                                                                                 NUMBER(5)
+ DEPTID                                                                                                            NOT NULL NUMBER(2)
+ QUALID                                                                                                                     NUMBER(1)
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 7:
+SQL> 
+SQL> select employeeId, lname as "My Last Name", fname as "My First Name", salary
+  2  from employee;
+
+EMPLOYEEID My Last Name    My First Name   Salary Amount                                                                                                                                                
+---------- --------------- --------------- -------------                                                                                                                                                
+       111 Smith           John              $265,000.00                                                                                                                                                
+       246 Houston         Larry             $150,000.00                                                                                                                                                
+       123 Roberts         Sandi              $75,000.00                                                                                                                                                
+       433 McCall          Alex               $66,500.00                                                                                                                                                
+       543 Dev             Derek              $80,000.00                                                                                                                                                
+       200 Shaw            Jinku              $24,500.00                                                                                                                                                
+       135 Garner          Stanley            $45,000.00                                                                                                                                                
+       222 Chen            Sunny              $35,000.00                                                                                                                                                
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 8:
+SQL> 
+SQL> select * from dependent;
+
+EMPLOYEEID DEPENDENTID DEPDOB    RELATION                                                                                                                                                               
+---------- ----------- --------- --------                                                                                                                                                               
+       543           1 28-SEP-58 Spouse                                                                                                                                                                 
+       543           2 14-OCT-88 Son                                                                                                                                                                    
+       200           1 10-JUN-76 Spouse                                                                                                                                                                 
+       222           1 04-FEB-75 Spouse                                                                                                                                                                 
+       222           2 23-AUG-97 Son                                                                                                                                                                    
+       222           3 10-JUL-99 Daughter                                                                                                                                                               
+       111           1 12-DEC-45 Spouse                                                                                                                                                                 
+
+7 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 9:
+SQL> 
+SQL> delete from dependent
+  2  where employeeId = 222;
+
+3 rows deleted.
+
+SQL> 
+SQL> select * from dependent;
+
+EMPLOYEEID DEPENDENTID DEPDOB    RELATION                                                                                                                                                               
+---------- ----------- --------- --------                                                                                                                                                               
+       543           1 28-SEP-58 Spouse                                                                                                                                                                 
+       543           2 14-OCT-88 Son                                                                                                                                                                    
+       200           1 10-JUN-76 Spouse                                                                                                                                                                 
+       111           1 12-DEC-45 Spouse                                                                                                                                                                 
+
+SQL> 
+SQL> 
+SQL> 
+SQL> delete from employee
+  2  where employeeId = 222;
+
+1 row deleted.
+
+SQL> 
+SQL> select * from employee;
+
+EMPLOYEEID Last Name            First Name           POSITIONID SUPERVISOR HIREDATE  Salary Amount COMMISSION     DEPTID     QUALID                                                                     
+---------- -------------------- -------------------- ---------- ---------- --------- ------------- ---------- ---------- ----------                                                                     
+       111 Smith                John                          1            15-APR-60   $265,000.00      35000         10          1                                                                     
+       246 Houston              Larry                         2        111 19-MAY-67   $150,000.00      10000         40          2                                                                     
+       123 Roberts              Sandi                         2        111 02-DEC-91    $75,000.00                    10          2                                                                     
+       433 McCall               Alex                          3        543 10-MAY-97    $66,500.00                    20          4                                                                     
+       543 Dev                  Derek                         2        111 15-MAR-95    $80,000.00      20000         20          1                                                                     
+       200 Shaw                 Jinku                         5        135 03-JAN-00    $24,500.00       3000         30                                                                                
+       135 Garner               Stanley                       2        111 29-FEB-96    $45,000.00       5000         30          5                                                                     
+
+7 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 10:
+SQL> 
+SQL> rollback;
+
+Rollback complete.
+
+SQL> 
+SQL> select * from dependent;
+
+EMPLOYEEID DEPENDENTID DEPDOB    RELATION                                                                                                                                                               
+---------- ----------- --------- --------                                                                                                                                                               
+       543           1 28-SEP-58 Spouse                                                                                                                                                                 
+       543           2 14-OCT-88 Son                                                                                                                                                                    
+       200           1 10-JUN-76 Spouse                                                                                                                                                                 
+       222           1 04-FEB-75 Spouse                                                                                                                                                                 
+       222           2 23-AUG-97 Son                                                                                                                                                                    
+       222           3 10-JUL-99 Daughter                                                                                                                                                               
+       111           1 12-DEC-45 Spouse                                                                                                                                                                 
+
+7 rows selected.
+
+SQL> 
+SQL> select * from employee;
+
+EMPLOYEEID Last Name            First Name           POSITIONID SUPERVISOR HIREDATE  Salary Amount COMMISSION     DEPTID     QUALID                                                                     
+---------- -------------------- -------------------- ---------- ---------- --------- ------------- ---------- ---------- ----------                                                                     
+       111 Smith                John                          1            15-APR-60   $265,000.00      35000         10          1                                                                     
+       246 Houston              Larry                         2        111 19-MAY-67   $150,000.00      10000         40          2                                                                     
+       123 Roberts              Sandi                         2        111 02-DEC-91    $75,000.00                    10          2                                                                     
+       433 McCall               Alex                          3        543 10-MAY-97    $66,500.00                    20          4                                                                     
+       543 Dev                  Derek                         2        111 15-MAR-95    $80,000.00      20000         20          1                                                                     
+       200 Shaw                 Jinku                         5        135 03-JAN-00    $24,500.00       3000         30                                                                                
+       135 Garner               Stanley                       2        111 29-FEB-96    $45,000.00       5000         30          5                                                                     
+       222 Chen                 Sunny                         4        123 15-AUG-99    $35,000.00                    10          3                                                                     
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 11:
+SQL> 
+SQL> commit;
+
+Commit complete.
+
+SQL> 
+SQL> select * from dependent;
+
+EMPLOYEEID DEPENDENTID DEPDOB    RELATION                                                                                                                                                               
+---------- ----------- --------- --------                                                                                                                                                               
+       543           1 28-SEP-58 Spouse                                                                                                                                                                 
+       543           2 14-OCT-88 Son                                                                                                                                                                    
+       200           1 10-JUN-76 Spouse                                                                                                                                                                 
+       222           1 04-FEB-75 Spouse                                                                                                                                                                 
+       222           2 23-AUG-97 Son                                                                                                                                                                    
+       222           3 10-JUL-99 Daughter                                                                                                                                                               
+       111           1 12-DEC-45 Spouse                                                                                                                                                                 
+
+7 rows selected.
+
+SQL> 
+SQL> select * from employee;
+
+EMPLOYEEID Last Name            First Name           POSITIONID SUPERVISOR HIREDATE  Salary Amount COMMISSION     DEPTID     QUALID                                                                     
+---------- -------------------- -------------------- ---------- ---------- --------- ------------- ---------- ---------- ----------                                                                     
+       111 Smith                John                          1            15-APR-60   $265,000.00      35000         10          1                                                                     
+       246 Houston              Larry                         2        111 19-MAY-67   $150,000.00      10000         40          2                                                                     
+       123 Roberts              Sandi                         2        111 02-DEC-91    $75,000.00                    10          2                                                                     
+       433 McCall               Alex                          3        543 10-MAY-97    $66,500.00                    20          4                                                                     
+       543 Dev                  Derek                         2        111 15-MAR-95    $80,000.00      20000         20          1                                                                     
+       200 Shaw                 Jinku                         5        135 03-JAN-00    $24,500.00       3000         30                                                                                
+       135 Garner               Stanley                       2        111 29-FEB-96    $45,000.00       5000         30          5                                                                     
+       222 Chen                 Sunny                         4        123 15-AUG-99    $35,000.00                    10          3                                                                     
+
+8 rows selected.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 12:
+SQL> 
+SQL> truncate table dependent;
+
+Table truncated.
+
+SQL> 
+SQL> select * from dependent;
+
+no rows selected
+
+SQL> 
+SQL> describe dependent
+ Name                                                                                                              Null?    Type
+ ----------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------
+ EMPLOYEEID                                                                                                        NOT NULL NUMBER(3)
+ DEPENDENTID                                                                                                       NOT NULL NUMBER(1)
+ DEPDOB                                                                                                                     DATE
+ RELATION                                                                                                                   VARCHAR2(8)
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 13:
+SQL> 
+SQL> drop table employee;
+drop table employee
+           *
+ERROR at line 1:
+ORA-02449: unique/primary keys in table referenced by foreign keys 
+
+
+SQL> 
+SQL> drop table employee cascade constraints;
+
+Table dropped.
+
+SQL> 
+SQL> describe employee
+ERROR:
+ORA-04043: object employee does not exist 
+
+
+SQL> 
+SQL> rollback;
+
+Rollback complete.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> --Step 14:
+SQL> 
+SQL> spool off
